@@ -16,7 +16,7 @@ def quicksort_sequential(arr):
 
 def quicksort_parallel(arr, p_pipe, num_max_proc, num_current_proc):
     if len(arr) < 2 or num_current_proc > num_max_proc:
-        p_pipe.send(sorted(arr))
+        p_pipe.send(quicksort_sequential(arr))
         p_pipe.close()
         return
 
@@ -78,4 +78,4 @@ def quicksort(arr, max_proc):
 
 
 if __name__ == '__main__':
-    quicksort([454,54, 2, 0, -4, 45, 0, 8, -2], 1)
+    quicksort([454, 54, 2, 0, -4, 45, 0, 8, -2], 1)
