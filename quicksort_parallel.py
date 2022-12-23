@@ -2,6 +2,18 @@ import random
 from multiprocessing import Pipe, Process
 
 
+def quicksort_sequential(arr):
+    if len(arr) < 2:
+        return arr
+
+    pivot = arr.pop(random.randint(0, len(arr) - 1))
+
+    left_arr = [item for item in arr if item < pivot]
+    right_arr = [item for item in arr if item >= pivot]
+
+    return quicksort_sequential(left_arr) + [pivot] + quicksort_sequential(right_arr)
+
+
 def quicksort_parallel(arr, p_pipe, num_max_proc, num_current_proc):
     if len(arr) < 2 or num_current_proc > num_max_proc:
         p_pipe.send(sorted(arr))
