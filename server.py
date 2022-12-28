@@ -3,7 +3,7 @@ from multiprocessing import Process, Pipe
 from queue import Queue
 
 import select
-from colorama import Fore
+from colorama import Fore, Style
 
 from quicksort_parallel import quicksort_parallel
 
@@ -40,6 +40,8 @@ def create_server(host, port):
     # Listen
     server.listen()
 
+    print(Fore.BLUE + f'Listening on {host}:{port}' + Style.RESET_ALL)
+
     return server
 
 
@@ -64,7 +66,7 @@ def serve(server):
                 # Accept the client
                 connection, client = obj.accept()
 
-                print(Fore.BLUE + f'New client found: {client}')
+                print(Fore.GREEN + f'New client found: {client}' + Style.RESET_ALL)
 
                 # Unset blocking
                 connection.setblocking(0)
@@ -79,7 +81,7 @@ def serve(server):
                 message = obj.recv(1024)
                 if message:
                     if obj not in messages_per_client.keys():
-                        print(Fore.RED + 'Client not registered')
+                        print(Fore.RED + 'Client not registered' + Style.RESET_ALL)
                         continue
                     try:
                         message_eval = eval(message)
@@ -87,6 +89,7 @@ def serve(server):
                         if not isinstance(message_eval, tuple) or not isinstance(message_eval[1], list):
                             print(Fore.YELLOW + 'Please provide input in the following format:')
                             print(Fore.YELLOW + '(<number of processes>, <list to sort>)')
+                            print(Style.RESET_ALL)
                         else:
                             # Sort the list
                             sorted_list = quicksort_helper(message_eval[1], message_eval[0])
@@ -95,6 +98,7 @@ def serve(server):
                     except (ValueError, SyntaxError):
                         print(Fore.YELLOW + 'Please provide input in the following format:')
                         print(Fore.YELLOW + '(<number of processes>, <list to sort>)')
+                        print(Style.RESET_ALL)
 
                     # Add client to writes
                     if obj not in writes:
