@@ -9,3 +9,8 @@ def create_client(server_host, server_port):
     client.connect((server_host, server_port))
 
     return client
+
+
+def send_client(client, message):
+    print(f'Sending a message: {message}')
+    client.send(message.encode())
