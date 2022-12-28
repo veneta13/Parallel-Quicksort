@@ -1,8 +1,7 @@
 import socket
+from queue import Queue
 
 import select
-
-from queue import Queue
 
 
 def create_server(host, port):
@@ -48,6 +47,27 @@ def serve(server):
 
                 # Add client to reads
                 reads.append(connection)
+
+                # Create message queue for current connection
+                messages_per_client[client] = Queue()
+            else:
+                # Receive message
+                message = obj.recv(1024)
+                if message:
+
+                    if obj not in messages_per_client.keys():
+                        messages_per_client[obj] = Queue()
+
+                    try:
+                        print(eval(message))
+                    except (ValueError, SyntaxError):
+                        pass
+
+                    messages_per_client[obj].put(message)
+
+                    # Add to writes
+                    if obj not in writes:
+                        writes.append(obj)
 
 
 def main():
