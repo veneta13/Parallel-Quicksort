@@ -109,6 +109,13 @@ def serve(server):
                 # If there are messages waiting send them
                 obj.send(message.encode())
 
+        for obj in except_sel:
+            if obj in reads:
+                reads.remove(obj)
+            if obj in writes:
+                writes.remove(obj)
+            obj.close()
+
 
 def main():
     server = create_server('localhost', 8008)
