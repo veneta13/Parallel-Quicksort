@@ -14,3 +14,12 @@ def create_client(server_host, server_port):
 def send_client(client, message):
     print(f'Sending a message: {message}')
     client.send(message.encode())
+
+
+def receive_client(client):
+    message = client.recv(1024)
+
+    if not message:
+        client.close()
+        return None
+    return message
