@@ -69,6 +69,14 @@ def serve(server):
                     if obj not in writes:
                         writes.append(obj)
 
+        for obj in write_sel:
+            try:
+                message = messages_per_client[obj].get_nowait()
+            except:
+                writes.remove(obj)
+            else:
+                obj.send(message)
+
 
 def main():
     server = create_server('localhost', 8008)
