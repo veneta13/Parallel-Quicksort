@@ -3,6 +3,7 @@ from multiprocessing import Process, Pipe
 from queue import Queue
 
 import select
+from colorama import Fore
 
 from quicksort_parallel import quicksort_parallel
 
@@ -63,7 +64,7 @@ def serve(server):
                 # Accept the client
                 connection, client = obj.accept()
 
-                print(f'New client found: {client}')
+                print(Fore.BLUE + f'New client found: {client}')
 
                 # Unset blocking
                 connection.setblocking(0)
@@ -78,22 +79,22 @@ def serve(server):
                 message = obj.recv(1024)
                 if message:
                     if obj not in messages_per_client.keys():
-                        print('Client not registered')
+                        print(Fore.RED + 'Client not registered')
                         continue
                     try:
                         message_eval = eval(message)
 
                         if not isinstance(message_eval, tuple) or not isinstance(message_eval[1], list):
-                            print('Please provide input in the following format:')
-                            print('(<number of processes>, <list to sort>)')
+                            print(Fore.YELLOW + 'Please provide input in the following format:')
+                            print(Fore.YELLOW + '(<number of processes>, <list to sort>)')
                         else:
                             # Sort the list
                             sorted_list = quicksort_helper(message_eval[1], message_eval[0])
                             # Put message into message queue
                             messages_per_client[obj].put('[' + ','.join([str(i) for i in sorted_list]) + ']')
                     except (ValueError, SyntaxError):
-                        print('Please provide input in the following format:')
-                        print('(<number of processes>, <list to sort>)')
+                        print(Fore.YELLOW + 'Please provide input in the following format:')
+                        print(Fore.YELLOW + '(<number of processes>, <list to sort>)')
 
                     # Add client to writes
                     if obj not in writes:
