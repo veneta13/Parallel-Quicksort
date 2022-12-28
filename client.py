@@ -1,5 +1,7 @@
 import socket
 
+from colorama import Fore, Style
+
 
 def create_client(server_host, server_port):
     # Create socket
@@ -12,7 +14,7 @@ def create_client(server_host, server_port):
 
 
 def send_client(client, message):
-    print(f'Sending a message: {message}')
+    print(Fore.BLUE + f'Sending a message: {message}')
     client.send(message.encode())
 
 
@@ -23,15 +25,16 @@ def receive_client(client):
         client.close()
         return None
 
-    print(f'Received a message: {message}')
+    print(Fore.GREEN + f'Received a message: {message}')
+    print(Style.RESET_ALL)
     return message
 
 
 def client_user_input():
-    proc_count = int(input('Enter process count: '))
+    proc_count = int(input(Fore.MAGENTA + 'Enter process count: '))
 
-    elem_count = int(input('Enter number of elements: '))
-    input_list = list(map(int, input('Enter the list: ').strip().split()))[:elem_count]
+    elem_count = int(input(Fore.MAGENTA + 'Enter number of elements: '))
+    input_list = list(map(int, input(Fore.MAGENTA + 'Enter the list: ').strip().split()))[:elem_count]
 
     result = '('
     result += str(proc_count)
