@@ -2,6 +2,8 @@ import socket
 
 import select
 
+from queue import Queue
+
 
 def create_server(host, port):
     # Create socket
@@ -12,6 +14,8 @@ def create_server(host, port):
 
     # Bind to host and port
     server.bind((host, port))
+
+    server.listen()
 
     return server
 
@@ -25,6 +29,9 @@ def serve(server):
 
     # Wait for exceptional condition list
     errors = []
+
+    # Message queue
+    messages_per_client = {}
 
     while True:
         read_sel, write_sel, except_sel = select.select(reads, writes, errors)
