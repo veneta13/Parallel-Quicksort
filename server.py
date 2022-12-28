@@ -1,7 +1,6 @@
-import select
 import socket
-import sys
-from queue import Queue
+
+import select
 
 
 def create_server(host, port):
@@ -42,3 +41,12 @@ def serve(server):
 
                 # Add client to reads
                 reads.append(connection)
+
+
+def main():
+    server = create_server('localhost', 8008)
+    serve(server)
+
+
+if __name__ == "__main__":
+    main()
