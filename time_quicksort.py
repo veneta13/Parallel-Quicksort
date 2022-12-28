@@ -24,7 +24,10 @@ def main():
 
             proc.join()
             proc.close()
-            print(f'Time taken for {2 ** (proc_count + 1) if proc_count != 0 else 1} process(es) to sort array with {test[test_case]} members: {end - start}')
+            print(
+                f'Time taken for {2 ** (proc_count + 1) if proc_count != 0 else 1} '
+                f'process(es) to sort array with {test[test_case]} '
+                f'members: {end - start}')
         print('---------------------------------------------------------------------------------------------')
 
 
