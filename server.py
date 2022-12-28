@@ -72,13 +72,14 @@ def serve(server):
                 reads.append(connection)
 
                 # Create message queue for current connection
-                messages_per_client[client] = Queue()
+                messages_per_client[connection] = Queue()
             else:
                 # Receive message
                 message = obj.recv(1024)
                 if message:
                     if obj not in messages_per_client.keys():
-                        messages_per_client[obj] = Queue()
+                        print('Client not registered')
+                        continue
                     try:
                         message_eval = eval(message)
 
