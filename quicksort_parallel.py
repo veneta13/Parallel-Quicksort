@@ -24,7 +24,7 @@ def quicksort_parallel(arr, p_pipe, num_max_proc, num_current_proc):
             left_arr,
             left_c_pipe,
             num_max_proc,
-            num_current_proc * 2
+            num_current_proc + 1
         )
     )
 
@@ -34,7 +34,7 @@ def quicksort_parallel(arr, p_pipe, num_max_proc, num_current_proc):
             right_arr,
             right_c_pipe,
             num_max_proc,
-            num_current_proc * 2
+            num_current_proc + 1
         )
     )
 

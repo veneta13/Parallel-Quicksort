@@ -10,7 +10,7 @@ def main():
     test = [1000, 10000, 100000, 1000000, 10000000, 100000000]
     arrays = [[random.random() for x in range(test[case])] for case in range(len(test))]
 
-    for proc_count in range(int(math.log2(cpu_count()))):
+    for proc_count in range(int(math.log2(cpu_count())) + 1):
         for test_case in range(len(test)):
             time.sleep(2)
 
@@ -25,7 +25,7 @@ def main():
             proc.join()
             proc.close()
             print(
-                f'Time taken for {2 ** (proc_count + 1) if proc_count != 0 else 1} '
+                f'Time taken for {2 ** proc_count if proc_count != 0 else 1} '
                 f'process(es) to sort array with {test[test_case]} '
                 f'members: {end - start}')
         print('---------------------------------------------------------------------------------------------')
