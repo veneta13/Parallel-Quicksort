@@ -1,3 +1,4 @@
+import argparse
 import socket
 
 from colorama import Fore, Style
@@ -46,7 +47,12 @@ def client_user_input():
 
 
 def main():
-    client = create_client('localhost', 8008)
+    argParser = argparse.ArgumentParser()
+    argParser.add_argument("-sh", "--server_host", type=str, default='localhost', help="Host name")
+    argParser.add_argument("-sp", "--server_port", type=int, default='8008', help="Port number")
+    args = argParser.parse_args()
+
+    client = create_client(args.server_host, args.server_port)
     send_client(client, client_user_input())
     receive_client(client)
 
