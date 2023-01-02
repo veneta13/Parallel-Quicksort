@@ -32,7 +32,7 @@ def receive_client(client):
 
 
 def client_user_input():
-    proc_count = int(input(Fore.MAGENTA + 'Enter process count: '))
+    proc_count = int(input(Fore.MAGENTA + 'Enter process level count (for each level the number of processes is 2^level): '))
 
     input_list = list(map(int, input(Fore.MAGENTA + 'Enter the list: ').strip().split()))
 
