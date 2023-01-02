@@ -1,3 +1,4 @@
+import argparse
 import socket
 from multiprocessing import Process, Pipe
 from queue import Queue
@@ -124,7 +125,12 @@ def serve(server):
 
 
 def main():
-    server = create_server('localhost', 8008)
+    argParser = argparse.ArgumentParser()
+    argParser.add_argument("-sh", "--server_host", type=str, default='localhost', help="Host name")
+    argParser.add_argument("-sp", "--server_port", type=int, default='8008', help="Port number")
+    args = argParser.parse_args()
+
+    server = create_server(args.server_host, args.server_port)
     serve(server)
 
 
