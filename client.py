@@ -33,8 +33,7 @@ def receive_client(client):
 def client_user_input():
     proc_count = int(input(Fore.MAGENTA + 'Enter process count: '))
 
-    elem_count = int(input(Fore.MAGENTA + 'Enter number of elements: '))
-    input_list = list(map(int, input(Fore.MAGENTA + 'Enter the list: ').strip().split()))[:elem_count]
+    input_list = list(map(int, input(Fore.MAGENTA + 'Enter the list: ').strip().split()))
 
     result = '('
     result += str(proc_count)
