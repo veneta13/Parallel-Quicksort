@@ -1,0 +1,28 @@
+Time taken for 1 process(es) to sort array with 1000 members: 0.1718766689300537
+Time taken for 1 process(es) to sort array with 10000 members: 0.12436366081237793
+Time taken for 1 process(es) to sort array with 100000 members: 0.5618457794189453
+Time taken for 1 process(es) to sort array with 1000000 members: 4.952496290206909
+Time taken for 1 process(es) to sort array with 10000000 members: 68.22356247901917
+Time taken for 1 process(es) to sort array with 100000000 members: 943.0116219520569
+---------------------------------------------------------------------------------------------
+Time taken for 2 process(es) to sort array with 1000 members: 0.48378634452819824
+Time taken for 2 process(es) to sort array with 10000 members: 0.3118898868560791
+Time taken for 2 process(es) to sort array with 100000 members: 0.5774855613708496
+Time taken for 2 process(es) to sort array with 1000000 members: 3.436887502670288
+Time taken for 2 process(es) to sort array with 10000000 members: 37.92128896713257
+Time taken for 2 process(es) to sort array with 100000000 members: 770.7055184841156
+---------------------------------------------------------------------------------------------
+Time taken for 4 process(es) to sort array with 1000 members: 0.9056112766265869
+Time taken for 4 process(es) to sort array with 10000 members: 0.5618631839752197
+Time taken for 4 process(es) to sort array with 100000 members: 0.7806286811828613
+Time taken for 4 process(es) to sort array with 1000000 members: 4.265064001083374
+Time taken for 4 process(es) to sort array with 10000000 members: 41.343201637268066
+Time taken for 4 process(es) to sort array with 100000000 members: 427.78471517562866
+---------------------------------------------------------------------------------------------
+Time taken for 8 process(es) to sort array with 1000 members: 0.8281261920928955
+Time taken for 8 process(es) to sort array with 10000 members: 0.7806293964385986
+Time taken for 8 process(es) to sort array with 100000 members: 0.9840919971466064
+Time taken for 8 process(es) to sort array with 1000000 members: 3.21811842918396
+Time taken for 8 process(es) to sort array with 10000000 members: 34.64002180099487
+Time taken for 8 process(es) to sort array with 100000000 members: 455.4189040660858
+---------------------------------------------------------------------------------------------
